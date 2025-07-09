@@ -241,6 +241,7 @@
         }
         
         .mobile-menu.active {
+            display: block;
             transform: translateX(0);
         }
         
@@ -262,6 +263,9 @@
             left: 16px;
             font-size: 20px;
             color: #e0e0e0;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
         
         .section-title {
@@ -372,11 +376,11 @@
             <i class="fas fa-times"></i>
         </button>
         <div class="mt-16">
-            <a href="#team" class="text-lg" onclick="navigateToSection('team')">اعضای گروه</a>
-            <a href="#schools" class="text-lg" onclick="navigateToSection('schools')">هنرستان‌های شهرستان</a>
-            <a href="#reports" class="text-lg" onclick="navigateToSection('reports')">گزارش عملکرد</a>
-            <a href="#resources" class="text-lg" onclick="navigateToSection('resources')">منابع آموزشی</a>
-            <a href="#support" class="text-lg" onclick="navigateToSection('support')">ارتباط با پشتیبانی</a>
+            <a href="#team" class="block text-lg px-4 py-2" onclick="navigateToSection('team')">اعضای گروه</a>
+            <a href="#schools" class="block text-lg px-4 py-2" onclick="navigateToSection('schools')">هنرستان‌های شهرستان</a>
+            <a href="#reports" class="block text-lg px-4 py-2" onclick="navigateToSection('reports')">گزارش عملکرد</a>
+            <a href="#resources" class="block text-lg px-4 py-2" onclick="navigateToSection('resources')">منابع آموزشی</a>
+            <a href="#support" class="block text-lg px-4 py-2" onclick="navigateToSection('support')">ارتباط با پشتیبانی</a>
         </div>
     </div>
 
@@ -392,6 +396,7 @@
                         <p class="text-sm text-gray-300">استان فارس</p>
                     </div>
                 </div>
+                <a href="#login" class="px-4 py-2 bg-d2b48c text-white rounded-full hover:bg-amber-700 transition">ورود به اطلاعات</a>
             </div>
         </header>
         
@@ -461,7 +466,7 @@
                             <i class="fas fa-chevron-down transition-transform duration-300 text-e0e0e0"></i>
                         </div>
                         <div class="accordion-content">
-                            <a href="https://zncd.ir/?direct_file=eyJpZCI6IjFrTGhJWWxsT2t5TFBqeDNCOVFuaU9WSlRLU3lzLU1XQiIsImA2Y291bnRJZCI6IjA1MTI3MjA5MDc5MTM1ODgwNDk2IiwidHlwZSI6ImFwcGxpY2F0aW9uL3BkZiIsIm5hbWUiOiJ3ZWJfMTFfV2ViRGVzaWduLnBkZiJ9"
+                            <a href="https://zncd.ir/?direct_file=eyJpZCI6IjFrTGhJWWxsT2t5TFBqeDNCOVFuaU9WSlRLU3lzLU1XQiIsImA6Y291bnRJZCI6IjA1MTI3MjA5MDc5MTM1ODgwNDk2IiwidHlwZSI6ImFwcGxpY2F0aW9uL3BkZiIsIm5hbWUiOiJ3ZWJfMTFfV2ViRGVzaWduLnBkZiJ9"
                                 target="_blank" class="course-link">
                                 تولید کننده و توسعه دهنده پایگاه های اینترنتی
                             </a>
@@ -931,62 +936,78 @@
     </div>
 
     <script>
-        function createMeteors() {
-            const container = document.getElementById('meteors-container');
-            const count = 10;
-            for (let i = 0; i < count; i++) {
-                const meteor = document.createElement('div');
-                meteor.className = 'meteor';
-                meteor.style.left = `${Math.random() * 100}vw`;
-                meteor.style.animationDelay = `${Math.random() * 10}s`;
-                meteor.style.animationDuration = `${3 + Math.random() * 5}s`;
-                container.appendChild(meteor);
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMenu = document.getElementById('closeMenu');
+
+            if (hamburger && mobileMenu && closeMenu) {
+                hamburger.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                });
+
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+
+                // بستن منو با کلیک خارج از آن
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                        mobileMenu.classList.remove('active');
+                    }
+                });
             }
-        }
-        
-        function showMoreInfo(school) {
-            const modal = document.getElementById('moreInfoModal');
-            const title = document.getElementById('modalTitle');
-            modal.classList.remove('hidden');
-            document.querySelectorAll('#modalContent > div').forEach(div => div.classList.add('hidden'));
-            if (school === 'zeynab') {
-                title.textContent = 'هنرستان زینب کبری حاجی آباد';
-                document.getElementById('zeynabInfo').classList.remove('hidden');
-            } else if (school === 'valfajr') {
-                title.textContent = 'هنرستان والفجر شهرپیر';
-                document.getElementById('valfajrInfo').classList.remove('hidden');
-            } else if (school === 'shahid') {
-                title.textContent = 'هنرستان شهید پاکیزه خو';
-                document.getElementById('shahidInfo').classList.remove('hidden');
+
+            function navigateToSection(sectionId) {
+                mobileMenu.classList.remove('active');
+                setTimeout(() => {
+                    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
             }
-        }
-        
-        function closeMoreInfo() {
-            document.getElementById('moreInfoModal').classList.add('hidden');
-        }
-        
-        function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            const icon = header.querySelector('i');
-            content.classList.toggle('show');
-            icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-        
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        
-        hamburger.addEventListener('click', () => mobileMenu.classList.add('active'));
-        closeMenu.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        
-        function navigateToSection(sectionId) {
-            mobileMenu.classList.remove('active');
-            setTimeout(() => {
-                document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
-        }
-        
-        document.addEventListener('DOMContentLoaded', createMeteors);
+
+            function createMeteors() {
+                const container = document.getElementById('meteors-container');
+                const count = 10;
+                for (let i = 0; i < count; i++) {
+                    const meteor = document.createElement('div');
+                    meteor.className = 'meteor';
+                    meteor.style.left = `${Math.random() * 100}vw`;
+                    meteor.style.animationDelay = `${Math.random() * 10}s`;
+                    meteor.style.animationDuration = `${3 + Math.random() * 5}s`;
+                    container.appendChild(meteor);
+                }
+            }
+            
+            function showMoreInfo(school) {
+                const modal = document.getElementById('moreInfoModal');
+                const title = document.getElementById('modalTitle');
+                modal.classList.remove('hidden');
+                document.querySelectorAll('#modalContent > div').forEach(div => div.classList.add('hidden'));
+                if (school === 'zeynab') {
+                    title.textContent = 'هنرستان زینب کبری حاجی آباد';
+                    document.getElementById('zeynabInfo').classList.remove('hidden');
+                } else if (school === 'valfajr') {
+                    title.textContent = 'هنرستان والفجر شهرپیر';
+                    document.getElementById('valfajrInfo').classList.remove('hidden');
+                } else if (school === 'shahid') {
+                    title.textContent = 'هنرستان شهید پاکیزه خو';
+                    document.getElementById('shahidInfo').classList.remove('hidden');
+                }
+            }
+            
+            function closeMoreInfo() {
+                document.getElementById('moreInfoModal').classList.add('hidden');
+            }
+            
+            function toggleAccordion(header) {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                content.classList.toggle('show');
+                icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+
+            createMeteors();
+        });
     </script>
 </body>
 </html>
