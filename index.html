@@ -650,8 +650,8 @@
                                 <p class="text-gray-400">فاطمه بروانیا</p>
                             </div>
                             <div class="space-y-2 mt-4">
-                                <p class="font-medium text-00cccc">اطلاعات تماس:</p>
-                                <p class="text-gray-400">تلفن: ۰۷۱۵۳۷۲۴۸۹۵</p>
+                                <p class="font-medium text-00cccc">تلفن مدرسه:</p>
+                                <p class="text-gray-400">۰۷۱۵۳۷۲۴۸۹۵</p>
                             </div>
                         </div>
                         <div id="valfajrInfo" class="hidden">
@@ -660,8 +660,8 @@
                                 <p class="text-gray-400">زهرا پوررستمی</p>
                             </div>
                             <div class="space-y-2 mt-4">
-                                <p class="font-medium text-00cccc">اطلاعات تماس:</p>
-                                <p class="text-gray-400">تلفن: ۰۷۱۵۳۷۴۳۵۷۸</p>
+                                <p class="font-medium text-00cccc">تلفن مدرسه:</p>
+                                <p class="text-gray-400">۰۷۱۵۳۷۴۳۵۷۸</p>
                             </div>
                         </div>
                         <div id="shahidInfo" class="hidden">
@@ -670,8 +670,8 @@
                                 <p class="text-gray-400">فاطمه تروال</p>
                             </div>
                             <div class="space-y-2 mt-4">
-                                <p class="font-medium text-00cccc">اطلاعات تماس:</p>
-                                <p class="text-gray-400">تلفن: ۰۹۱۷۹۳۳۴۹۴۳</p>
+                                <p class="font-medium text-00cccc">تلفن مدرسه:</p>
+                                <p class="text-gray-400">۰۹۱۷۹۳۳۴۹۴۳</p>
                             </div>
                         </div>
                         <div id="bahonarInfo" class="hidden">
@@ -680,8 +680,8 @@
                                 <p class="text-gray-400">عباس امیری</p>
                             </div>
                             <div class="space-y-2 mt-4">
-                                <p class="font-medium text-00cccc">اطلاعات تماس:</p>
-                                <p class="text-gray-400">تلفن: ۰۷۱۵۳۷۲۳۰۰۷</p>
+                                <p class="font-medium text-00cccc">تلفن مدرسه:</p>
+                                <p class="text-gray-400">۰۷۱۵۳۷۲۳۰۰۷</p>
                             </div>
                         </div>
                     </div>
@@ -927,6 +927,19 @@
                         </a>
                     </div>
                 </div>
+                <div class="glass-card p-6 rounded-xl border border-00cccc">
+                    <div class="flex flex-col items-center text-center">
+                        <i class="fab fa-whatsapp text-4xl text-00cccc mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-00cccc">ارتباط مستقیم با پشتیبانی</h3>
+                        <p class="text-gray-500 mb-4">برای تماس سریع با پشتیبانی کلیک کنید</p>
+                        <a href="https://wa.me/989372565994?text=سلام%20وقت%20بخیر"
+                           target="_blank"
+                           class="px-6 py-3 rounded-full font-medium whatsapp-btn">
+                            <i class="fab fa-whatsapp ml-2"></i>
+                            تماس مستقیم
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -983,8 +996,10 @@
                 if (hamburger && mobileMenu) {
                     hamburger.classList.remove('active');
                     mobileMenu.classList.remove('active');
+                    setTimeout(() => {
+                        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
                 }
-                document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
             }
 
             function createMeteors() {
