@@ -402,7 +402,6 @@
                         <p class="text-sm text-gray-300">استان فارس</p>
                     </div>
                 </div>
-                <a href="#login" class="px-4 py-2 bg-00cccc text-white rounded-full hover:bg-009999 transition">ورود به اطلاعات</a>
             </div>
         </header>
         
@@ -527,7 +526,7 @@
                                 target="_blank" class="course-link">
                                 کاربر گرافیکی محتوای آموزشی
                             </a>
-                            <a href="https://zncd.ir/?direct_file=eyJpZCI6IjFmUTJJSU90Qm44T281bmpyb3JLMWNzcWowSG5xbV9wTSIsImFjY291bnRJZCI6IjA1MTI3MjA5MDc5MTM1ODgwNDk2IiwidHlwZSI6ImFwcGxpY2F0aW9uL3BkZiIsIm5hbWUiOiJlQ29udGVudEVkdV8xMl9lQ29udGVudE1ha2VyRm9rZUVkdWNhdGlvbi5wZGYifQ=="
+                            <a href="https://zncd.ir/?direct_file=eyJpZCI6IjFmUTJJSU90Qm44T281bmpyb3JLMWNzcWowSG5xbV9wTSIsImFjY291bnRJZCI6IjA1MTI3MjA5MDc5MTM1ODgwNDk2IiwidHlwZSI6ImFwcGxpY2F0aW9uL3BkZiIsIm5hbWUiOiJlQ29udGVudEVkdV_8xMl9lQ29udGVudE1ha2VyRm9rZUVkdWNhdGlvbi5wZGYifQ=="
                                 target="_blank" class="course-link">
                                 محتواساز آموزش الکترونیکی
                             </a>
@@ -539,7 +538,7 @@
                             <i class="fas fa-chevron-down transition-transform duration-300 text-f0f0f0"></i>
                         </div>
                         <div class="accordion-content">
-                            <a href="https://zncd.ir/?direct_file=eyJpZCI6IjEzdDRTZ01henktOWlEVFZwWXluREVDWUF6VVE5STBoVyIsImFjY291bnRJZCI6IjA1MTI3MjA5MDc5MTM1ODgwNDk2IiwidHlwZSI6ImFwcGxpY2F0aW9uL3BkZiIsIm5hbWUiOiJlQ29udGVudEVkdV8xMV9QdWJsaWNFQ29udGVudE1ha2VyLnBkZiJ9"
+                            <a href="https://zncd.ir/?direct_file=eyJpZCI6IjEzdDRTZ01henktOWlEVFZwWXluREVDWUF6VVE5STBoVyIsImFjY291bnRJZCI6IjA1MTI3MjA5MDc5MTM1ODgwNDk2IiwidHlwZSI6ImFwcGxpY2F0aW9uL3BkZiIsIm5hbWUiOiJlQ29udGVudEVkdV_8xMV9QdWJsaWNFQ29udGVudE1ha2VyLnBkZiJ9"
                                 target="_blank" class="course-link">
                                 تولید کننده محتوای الکترونیکی عمومی
                             </a>
@@ -965,11 +964,12 @@
                 const hamburger = document.getElementById('hamburger');
                 const mobileMenu = document.getElementById('mobileMenu');
                 if (hamburger && mobileMenu) {
-                    hamburger.classList.remove('active');
+                    hamburger.classList.remove('active'); // بلافاصله منو رو می‌بندیم
                     mobileMenu.classList.remove('active');
+                    // اسکرول به بخش موردنظر بعد از بستن منو
                     setTimeout(() => {
                         document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
+                    }, 100); // تاخیر کم برای اطمینان از بسته شدن منو
                 }
             }
 
